@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="hr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pridjev Escape – kviz o pridjevima za 3. razred (escape room)</title>
+<meta name="description" content="Pridjev Escape: besplatni online escape room kviz o pridjevima za učenike 3. razreda. Posvojni pridjevi, slaganje u rodu i broju, stupnjevanje i red riječi u rečenici. Igra se na mobitelu, s tajmerom i ljestvicom.">
+<meta name="keywords" content="pridjevi, kviz o pridjevima, hrvatski jezik, 3. razred, escape room, posvojni pridjevi, stupnjevanje pridjeva, slaganje pridjeva, igra za učenike">
+<meta name="robots" content="index,follow">
+<meta name="author" content="3.D">
+<link rel="canonical" href="https://KORISNIK.github.io/pridjev-escape/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="hr_HR">
+<meta property="og:title" content="Pridjev Escape – kviz o pridjevima (escape room)">
+<meta property="og:description" content="Zaključana učionica, 4 sobe i 10 minuta. Riješi zadatke o pridjevima i pobjegni prvi!">
+<meta property="og:url" content="https://KORISNIK.github.io/pridjev-escape/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pridjev Escape – kviz o pridjevima">
+<meta name="twitter:description" content="Escape room igra o pridjevima za učenike. 4 sobe, 10 minuta.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LearningResource","name":"Pridjev Escape","description":"Interaktivni escape room kviz o pridjevima: posvojni pridjevi, slaganje, stupnjevanje i red riječi.","inLanguage":"hr","educationalLevel":"3. razred osnovne škole","learningResourceType":"Kviz","isAccessibleForFree":true,"url":"https://KORISNIK.github.io/pridjev-escape/"}
+</script>
+<style>
+*{box-sizing:border-box;font-family:system-ui}body{margin:0;background:#0b0a1a;color:#fff;min-height:100vh;overflow-x:hidden}
+.wrap{max-width:580px;margin:auto;padding:14px}.card{background:#1d1b38;border:1px solid #a78bfa66;border-radius:22px;padding:20px;margin-top:14px;box-shadow:0 10px 40px #0008}
+h1{font-size:36px;text-align:center;margin:4px 0}h1 span{color:#facc15}.center{text-align:center}.muted{opacity:.75;font-size:14px}
+input,button{width:100%;padding:14px;border-radius:12px;border:0;font-size:17px;margin-top:10px}input{background:#111;color:#fff;border:1px solid #444}
+button{background:#facc15;font-weight:900;cursor:pointer;color:#000;transition:.2s}button:active{transform:scale(.97)}button.sec{background:#333;color:#fff}
+.top{display:flex;justify-content:space-between;font-weight:800}.bar{height:12px;background:#333;border-radius:99px;overflow:hidden;margin:10px 0}.bar i{display:block;height:100%;background:linear-gradient(90deg,#facc15,#a78bfa);transition:width .5s}
+.badge{display:inline-block;background:#a78bfa;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:800}
+.room{border:2px dashed #a78bfa55;border-radius:16px;padding:14px;margin:12px 0;position:relative;transition:.4s}.locked{opacity:.45;filter:grayscale(.6)}
+.room.unlocked{border-color:#22c55e;background:#12281a;animation:pop .6s}.room.shake{animation:shake .5s}
+@keyframes pop{0%{transform:scale(.95)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.float{animation:floaty 2s infinite}.word{background:#facc15;color:#000;padding:10px 14px;border-radius:99px;font-weight:800;cursor:pointer;display:inline-block;margin:4px}
+.slot{background:#2a2850;padding:12px;border-radius:10px;margin:6px 0;cursor:pointer}.slot.sel{outline:3px solid #facc15;background:#3b3670}
+.drop{min-height:56px;background:#111;border:2px dashed #555;border-radius:12px;padding:10px;margin:8px 0}.qr{width:170px;background:#fff;padding:8px;border-radius:12px;display:block;margin:12px auto}
+.hidden{display:none}.hint{background:#2e2a00;border:1px solid #facc1555;padding:10px;border-radius:10px;font-size:14px;margin-top:10px}
+/* DOOR */
+.doorWrap{height:140px;display:flex;justify-content:center;gap:0;margin:10px 0;perspective:800px}.door{width:90px;height:140px;background:linear-gradient(#8b5a2b,#5a3715);border:4px solid #facc15;border-radius:8px 8px 0 0;display:flex;align-items:center;justify-content:center;font-size:36px;transition:transform 1.2s;transform-origin:left}.door.open{transform:rotateY(-105deg);background:#22c55e}.doorLight{width:90px;height:140px;background:#fef08a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px;opacity:0;transition:.8s}.doorLight.show{opacity:1;animation:floaty 1s infinite}
+/* TEACHER */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.pCard{background:#25224d;border-radius:14px;padding:12px;border-left:5px solid #a78bfa;transition:.3s}.pCard.room1{border-color:#facc15}.pCard.room2{border-color:#38bdf8}.pCard.room3{border-color:#fb7185}.pCard.room4{border-color:#22c55e}.pCard.done{border-color:#facc15;background:#3a2f00;animation:pop .6s}.pCard b{font-size:16px}.prog{height:8px;background:#111;border-radius:99px;overflow:hidden;margin-top:8px}.prog i{display:block;height:100%;background:#facc15;transition:width .6s}
+.winnerBanner{background:linear-gradient(90deg,#facc15,#fb7185);color:#000;padding:20px;border-radius:16px;text-align:center;font-size:22px;font-weight:900;animation:pop .8s;margin-top:14px}
+.confetti{position:fixed;top:-10px;width:10px;height:16px;z-index:99;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+table{width:100%}td{padding:8px;border-bottom:1px solid #333}
+</style></head>
+<body><div class="wrap">
+<h1>🔒 PRIDJEV <span>ESCAPE</span> <span class="float">🚪</span></h1><p class="center muted">Zaključana učionica 3.D • 10:00 • 4 sobe • 20 igrača</p>
+
+<!-- LOGIN -->
+<div id="login" class="card">
+<b>PIN</b><input id="pin" placeholder="PIN: 3D-ESCAPE">
+<b style="display:block;margin-top:10px">NADIMAK</b><input id="nick" placeholder="npr. Fran">
+<button onclick="join()">🔓 OTKLJUČAJ VRATA →</button>
+<button class="sec" onclick="showHost()">👑 VODITELJ / NASTAVNICA — Projektor + LIVE napredak</button>
+<p class="center muted">Učenici: PIN + nadimak. Nastavnica: klikni Voditelj.</p>
+</div>
+
+<!-- HOST / TEACHER -->
+<div id="host" class="card hidden">
+<h2 class="center">📺 UŽIVO NA PROJEKTORU</h2>
+<img class="qr" id="qrImg" alt="QR kod za pristup igri" src="">
+<p class="center"><span class="badge">PIN: 3D-ESCAPE</span> &nbsp; ⏳ <span id="hostTime">10:00</span></p>
+<div id="winnerBox"></div>
+<p><b>🟢 Tko je gdje? (uživo)</b> <span class="muted">— soba 1 🟡 • soba 2 🔵 • soba 3 🩷 • soba 4 🟢</span></p>
+<div class="grid" id="teacherGrid"></div>
+<h3>🏆 Konačna ljestvica</h3><div id="hostBoard"></div>
+<button class="sec" onclick="startDemo()">▶ Pokreni DEMO napredak (za probu)</button>
+<button class="sec" onclick="back()">← Natrag</button>
+<p class="muted center">PRAVI LIVE: u kodu nađi FIREBASE_URL i zalijepi svoj besplatni Firebase Realtime link. Bez toga radi DEMO + lokalna ljestvica.</p>
+</div>
+
+<!-- GAME -->
+<div id="game" class="card hidden">
+<div class="top"><span id="player">Igrač</span><span>⏳ <span id="time">10:00</span></span><span>⭐ <span id="score">0</span></span></div>
+<div class="bar"><i id="timeBar"></i></div>
+<p><span class="badge" id="roomBadge">SOBA 1 / 4</span> <span id="progressTxt">Sef pravopisa</span></p>
+<div class="doorWrap"><div class="door" id="door">🔒</div><div class="doorLight" id="doorLight">✨</div></div>
+
+<div id="r1" class="room"><h3>🗄️ SOBA 1: SEF PRAVOPISA</h3><p>Šifra = <b>posvojni pridjev od Marko</b> + <b>7</b>. Kako se točno piše?</p><input id="code1" placeholder="npr. Markov7"><button onclick="checkRoom1()">Otključaj sef →</button><div class="hint">💡 -ov / -ev / -in = VELIKO slovo!</div></div>
+
+<div id="r2" class="room locked"><h3>🧪 SOBA 2: LABORATORIJ SROČNOSTI</h3><p>Klikni imenicu s kojom se <b>visok</b> slaže u rodu, broju i padežu.</p><div id="nouns"></div><button onclick="checkRoom2()">Provjeri spoj →</button><div class="hint">💡 visok čovjek / visoka žena / visoko dijete</div></div>
+
+<div id="r3" class="room locked"><h3>🏭 SOBA 3: TVORNICA STUPNJEVANJA</h3><p>Riječ je <b>JAK</b>, trebaš <b>SUPERLATIV</b>. Pomiči klizač!</p><p style="font-size:32px;text-align:center" id="sliderWord">jak</p><input type="range" id="slider" min="0" max="2" value="0" oninput="updSlider()"><p class="center muted">0 pozitiv • 1 komparativ • 2 superlativ</p><button onclick="checkRoom3()">ZAUSTAVI STROJ! 🛑</button><div class="hint">💡 jak → jači → najjači (dva J!)</div></div>
+
+<div id="r4" class="room locked"><h3>🚪 SOBA 4: FINAL BOSS</h3><p>Klikaj riječi redom: <b>ČIJI? + OD ČEGA? + ŠTO?</b></p><div id="wordBank"></div><p><b>Tvoja rečenica:</b></p><div class="drop" id="sentenceDrop">— klikaj riječi —</div><button onclick="checkRoom4()">OTVORI VRATA! 🚪</button><button class="sec" onclick="resetSentence()">↺ Poništi</button><div class="hint">💡 Ivanov drveni stol</div></div>
+</div>
+
+<!-- END -->
+<div id="end" class="card hidden"><h1 class="center">🎉 POBJEGAO SI!</h1><h2 class="center" id="finalScore"></h2><p class="center" id="finalMsg"></p><h3>🏆 Ljestvica</h3><div id="board"></div><button onclick="location.reload()">Igraj ponovo</button></div>
+
+<!-- Tekst za tražilice i čitače zaslona -->
+<section class="card muted" aria-label="O igri">
+<h2 style="font-size:18px;margin-top:0">O igri Pridjev Escape</h2>
+<p>Pridjev Escape je besplatni online escape room kviz o pridjevima za učenike 3. razreda osnovne škole. Učenici u 10 minuta prolaze kroz 4 sobe: pišu posvojni pridjev velikim početnim slovom (Markov), slažu pridjev s imenicom u rodu i broju (visok čovjek), stupnjevaju pridjev (jak – jači – najjači) i slažu rečenicu pravilnim redoslijedom (Ivanov drveni stol). Igra se na mobitelu, a učiteljica može pratiti napredak na projektoru.</p>
+</section>
+</div>
+
+<script>
+// <-- TU ZALIJEPITI FIREBASE LINK AKO ŽELIŠ PRAVI LIVE PREKO MOBITELA
+// Primjer: const FIREBASE_URL="https://tvoj-projekt-default-rtdb.firebaseio.com/escape";
+const FIREBASE_URL="";
+let nick="",score=0,secLeft=600,timer,selectedNoun="",sentence=[],room=1;
+let nouns=[{t:"čovjek (m)",ok:1},{t:"žena (ž)",ok:0},{t:"dijete (s)",ok:0}];
+let words=["stol","Ivanov","drveni","u","učionici"];
+let demoPlayers=[];
+
+// QR kod automatski pokazuje na adresu na kojoj je stranica objavljena
+document.getElementById('qrImg').src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data="+encodeURIComponent(location.origin+location.pathname);
+
+function join(){if(document.getElementById('pin').value.trim().toUpperCase()!=="3D-ESCAPE")return alert("Krivi PIN! PIN je 3D-ESCAPE");nick=document.getElementById('nick').value.trim()||"Igrač";document.getElementById('login').classList.add('hidden');document.getElementById('game').classList.remove('hidden');document.getElementById('player').textContent=nick;renderNouns();renderWords();sendProgress(1);startTimer();}
+function showHost(){document.getElementById('login').classList.add('hidden');document.getElementById('host').classList.remove('hidden');renderBoard('hostBoard');renderTeacher([]);}
+function back(){document.getElementById('host').classList.add('hidden');document.getElementById('login').classList.remove('hidden');}
+function startTimer(){timer=setInterval(()=>{secLeft--;let m=Math.floor(secLeft/60),s=secLeft%60;let t=m+":"+(s<10?"0":"")+s;document.getElementById('time').textContent=t;let ht=document.getElementById('hostTime');if(ht)ht.textContent=t;document.getElementById('timeBar').style.width=(secLeft/600*100)+"%";if(secLeft<=0){clearInterval(timer);alert("⏰ Vrijeme je isteklo!");location.reload();}},1000);}
+function addScore(p){score+=p;document.getElementById('score').textContent=score;}
+function shakeRoom(id){let el=document.getElementById(id);el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake');}
+function unlock(next){room=next;let el=document.getElementById('r'+next);el.classList.remove('locked');el.classList.add('unlocked');document.getElementById('roomBadge').textContent="SOBA "+next+" / 4";document.getElementById('progressTxt').textContent=["","Sef pravopisa","Laboratorij sročnosti","Tvornica stupnjevanja","Final Boss"][next];document.getElementById('door').textContent="🔓";setTimeout(()=>document.getElementById('door').textContent="🔒",900);sendProgress(next);el.scrollIntoView({behavior:'smooth'});setTimeout(()=>el.classList.remove('unlocked'),900);}
+function confetti(){for(let i=0;i<70;i++){let c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=['#facc15','#a78bfa','#22c55e','#fb7185','#38bdf8'][i%5];c.style.animationDuration=(Math.random()*1+1.2)+'s';c.style.animationDelay=(Math.random()*.4)+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),2800);}}
+
+function checkRoom1(){let v=document.getElementById('code1').value.trim();if(v==="Markov7"){addScore(100);unlock(2);alert("✅ KLIK! Sef otvoren! +100");}else if(v.toLowerCase()==="markov7"){shakeRoom('r1');alert("❌ Blizu! Ali mora VELIKO slovo: Markov7");}else{shakeRoom('r1');alert("❌ Kriva šifra! Marko + ov + 7");}}
+function renderNouns(){document.getElementById('nouns').innerHTML=nouns.map((n,i)=>`<div class="slot ${selectedNoun===n.t?'sel':''}" onclick="pickNoun(${i})">👉 ${n.t} ${selectedNoun===n.t?'✅':''}</div>`).join("");}
+function pickNoun(i){selectedNoun=nouns[i].t;renderNouns();}
+function checkRoom2(){if(!selectedNoun)return alert("Prvo klikni imenicu!");if(selectedNoun.includes("čovjek")){addScore(100);unlock(3);alert("✅ visok čovjek — slaže se! +100");}else{shakeRoom('r2');alert("❌ Ne slaže se! Uz ženu ide VISOKA, uz dijete VISOKO.");}}
+function updSlider(){document.getElementById('sliderWord').textContent=["jak","jači","najjači"][+document.getElementById('slider').value];}
+function checkRoom3(){if(+document.getElementById('slider').value===2){addScore(150);unlock(4);alert("✅ najjači = superlativ! +150");}else{shakeRoom('r3');alert("❌ To nije superlativ! Treba ti najjači.");}}
+function renderWords(){document.getElementById('wordBank').innerHTML=words.map(w=>`<span class="word" onclick="addWord('${w}')">${w}</span>`).join("");}
+function addWord(w){if(sentence.includes(w))return;sentence.push(w);document.getElementById('sentenceDrop').textContent=sentence.join(" ");}
+function resetSentence(){sentence=[];document.getElementById('sentenceDrop').textContent="— klikaj riječi —";}
+function checkRoom4(){if(sentence.join(" ")==="Ivanov drveni stol"){addScore(200);finish();}else{shakeRoom('r4');alert("❌ Vrata se ne otvaraju! Treba: Ivanov drveni stol");}}
+function finish(){clearInterval(timer);addScore(secLeft);document.getElementById('door').classList.add('open');document.getElementById('door').textContent="🚪";document.getElementById('doorLight').classList.add('show');confetti();sendProgress(5);setTimeout(()=>{document.getElementById('game').classList.add('hidden');document.getElementById('end').classList.remove('hidden');document.getElementById('finalScore').textContent="⭐ "+score+" bodova";document.getElementById('finalMsg').textContent="Bravo, "+nick+"! Pobjegao si iz učionice!";let b=JSON.parse(localStorage.getItem('escape_board')||"[]");b.push({n:nick,s:score});b.sort((a,b)=>b.s-a.s);localStorage.setItem('escape_board',JSON.stringify(b.slice(0,20)));renderBoard('board');},1400);}
+function renderBoard(id){let b=JSON.parse(localStorage.getItem('escape_board')||"[]");document.getElementById(id).innerHTML=b.length?`<table>${b.map((x,i)=>`<tr><td>${i+1}.</td><td>${x.n}</td><td><b>${x.s} ⭐</b></td></tr>`).join("")}</table>`:"<p>Još nitko nije pobjegao.</p>";}
+
+// --- LIVE / TEACHER ---
+async function sendProgress(r){let data={n:nick,s:score,room:r,time:secLeft};localStorage.setItem('me_progress',JSON.stringify(data));if(!FIREBASE_URL)return;try{await fetch(FIREBASE_URL+"/"+encodeURIComponent(nick)+".json",{method:"PUT",body:JSON.stringify(data)});}catch(e){}}
+function renderTeacher(list){let grid=document.getElementById('teacherGrid');if(!list.length){grid.innerHTML="<p class='muted'>Čeka se učenike... Otvorite Voditelj na projektoru, učenici se spajaju na mobitelima.</p>";return;}let done=list.find(p=>p.room===5);document.getElementById('winnerBox').innerHTML=done?`<div class="winnerBanner">🏆 PRVI JE POBJEGAO: ${done.n} • ${done.s} ⭐</div>`:"";grid.innerHTML=list.map(p=>`<div class="pCard room${Math.min(p.room,4)} ${p.room===5?'done':''}"><b>${p.room===5?'🎉 ':''}${p.n}</b><div class="muted">${p.room===5?'POBJEGAO / SOBA 4 ✓':'Soba '+p.room+' / 4'} • ${p.s} ⭐</div><div class="prog"><i style="width:${p.room===5?100:(p.room/4*100)}%"></i></div></div>`).join("");}
+async function pollTeacher(){if(!FIREBASE_URL)return;try{let res=await fetch(FIREBASE_URL+".json");let j=await res.json();if(j)renderTeacher(Object.values(j));}catch(e){}}
+setInterval(pollTeacher,2000);
+// DEMO za probu na projektoru
+function startDemo(){let names=["Marko M.","Frane","Ivan","Marko G.","Ana","Petra","Luka","Mia","Sara","Tea","Noa","Iva","Karlo","Ema","Roko","Nika","Borna","Lana","Tara","Vito"];demoPlayers=names.map((n,i)=>({n:n,s:Math.floor(Math.random()*80),room:1,time:600}));renderTeacher(demoPlayers);let iv=setInterval(()=>{let allDone=demoPlayers.every(p=>p.room===5);if(allDone){clearInterval(iv);return;}let p=demoPlayers[Math.floor(Math.random()*demoPlayers.length)];if(p.room<5){p.room++;p.s+=100+Math.floor(Math.random()*80);}renderTeacher(demoPlayers);let done=demoPlayers.filter(x=>x.room===5);if(done.length){let b=done.map(x=>({n:x.n,s:x.s}));b.sort((a,b)=>b.s-a.s);document.getElementById('hostBoard').innerHTML=`<table>${b.map((x,i)=>`<tr><td>${i+1}.</td><td>${x.n}</td><td><b>${x.s} ⭐</b></td></tr>`).join("")}</table>`;}},1200);}
+</script></body></html>
